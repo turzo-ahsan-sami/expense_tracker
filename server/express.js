@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import compress from "compression";
 import cors from "cors";
 import helmet from "helmet";
+
 import Template from "./../template";
 import userRoutes from "./routes/user.routes";
 import authRoutes from "./routes/auth.routes";
@@ -19,7 +20,6 @@ import { StaticRouter } from "react-router-dom";
 
 import { ServerStyleSheets, ThemeProvider } from "@material-ui/styles";
 import theme from "./../client/theme";
-//end
 
 //comment out before building for production
 import devBundle from "./devBundle";

@@ -1,18 +1,25 @@
-import express from 'express'
-import userCtrl from '../controllers/user.controller'
-import authCtrl from '../controllers/auth.controller'
+import express from "express";
+import UserController from "../controllers/user.controller";
+import AuthController from "../controllers/auth.controller";
 
-const router = express.Router()
+const router = express.Router();
 
-router.route('/api/users')
-  .get(userCtrl.list)
-  .post(userCtrl.create)
+router.route("/api/users").get(UserController.list).post(UserController.create);
 
-router.route('/api/users/:userId')
-  .get(authCtrl.requireSignin, userCtrl.read)
-  .put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.update)
-  .delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.remove)
+router
+  .route("/api/users/:userId")
+  .get(AuthController.requireSignin, UserController.read)
+  .put(
+    AuthController.requireSignin,
+    AuthController.hasAuthorization,
+    UserController.update
+  )
+  .delete(
+    AuthController.requireSignin,
+    AuthController.hasAuthorization,
+    UserController.remove
+  );
 
-router.param('userId', userCtrl.userByID)
+router.param("userId", UserController.userByID);
 
-export default router
+export default router;
